@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--View Controller-->
         <scene sceneID="cyx-oz-dbg">
             <objects>
-                <tableViewController modalPresentationStyle="pageSheet" clearsSelectionOnViewWillAppear="NO" id="uM5-tQ-9Ka" sceneMemberID="viewController">
+                <tableViewController modalPresentationStyle="pageSheet" clearsSelectionOnViewWillAppear="NO" id="uM5-tQ-9Ka" customClass="ViewController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="7JB-SL-HsW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,6 +26,9 @@
                                         <rect key="frame" x="16" y="7" width="57" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Settings"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="keyPath" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                 </barButtonItem>
                             </items>
@@ -60,6 +63,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="e14-CO-NxZ" kind="show" identifier="science" id="cG0-lv-sgB"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="80" id="x8e-6f-DJ9">
                                         <rect key="frame" x="0.0" y="80" width="375" height="80"/>
@@ -88,6 +94,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="e14-CO-NxZ" kind="show" identifier="math" id="27h-qQ-NqJ"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="80" id="d0F-xc-ngm">
                                         <rect key="frame" x="0.0" y="160" width="375" height="80"/>
@@ -116,6 +125,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="e14-CO-NxZ" kind="show" identifier="marvel" id="RN3-zu-3qe"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -128,7 +140,85 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xwY-7N-vJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="129" y="637"/>
+            <point key="canvasLocation" x="128.80000000000001" y="636.4317841079461"/>
+        </scene>
+        <!--Question Controller-->
+        <scene sceneID="cXw-vS-fqy">
+            <objects>
+                <viewController id="e14-CO-NxZ" customClass="QuestionController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="DMC-v2-TK1"/>
+                        <viewControllerLayoutGuide type="bottom" id="T0o-gy-Udd"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kxx-ot-LjN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBf-cy-SZe">
+                                <rect key="frame" x="0.0" y="40" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAb-z2-Q1F">
+                                <rect key="frame" x="109" y="617" width="157" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <segue destination="Jhi-Xr-5T1" kind="show" id="adb-0P-zH4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="qLabel" destination="UBf-cy-SZe" id="oMG-Bg-WsA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iU9-qo-5GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="965.60000000000002" y="635.53223388305855"/>
+        </scene>
+        <!--Answer Controller-->
+        <scene sceneID="ixS-p7-69l">
+            <objects>
+                <viewController id="Jhi-Xr-5T1" customClass="AnswerController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qeO-n3-Cuh"/>
+                        <viewControllerLayoutGuide type="bottom" id="94L-85-a6B"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ntr-6h-VZl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4xC-hS-d20">
+                                <rect key="frame" x="154" y="438" width="66" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Next"/>
+                                <connections>
+                                    <segue destination="e14-CO-NxZ" kind="show" id="gdg-7z-lfL"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Answer is correct" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sY-kl-UBD">
+                                <rect key="frame" x="104" y="130" width="167" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="message" destination="4sY-kl-UBD" id="qx9-SE-fzl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Xp-ME-gn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845.5999999999999" y="635.53223388305855"/>
         </scene>
     </scenes>
     <resources>
@@ -136,4 +226,7 @@
         <image name="basic3-105_calculator-512" width="512" height="512"/>
         <image name="science-icon-19049" width="512" height="512"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="27h-qQ-NqJ"/>
+    </inferredMetricsTieBreakers>
 </document>

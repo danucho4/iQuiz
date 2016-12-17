@@ -8,12 +8,16 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
     
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let button = UIButton();
+        button.setTitle("Settings", for: .normal)
+        self.view.addSubview(button)
+     
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,9 +25,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func showAlert() {
-        
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let DestViewController : QuestionController = segue.destination as! QuestionController
+        DestViewController.type = segue.identifier!
+        //print(segue.identifier!)
     }
-
 }
 
