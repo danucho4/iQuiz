@@ -161,7 +161,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAb-z2-Q1F">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CAb-z2-Q1F" customClass="SubmitButton">
                                 <rect key="frame" x="109" y="617" width="157" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
@@ -170,16 +170,75 @@
                                     <segue destination="Jhi-Xr-5T1" kind="show" id="adb-0P-zH4"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QHc-EJ-wk9">
+                                <rect key="frame" x="8" y="20" width="66" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Exit"/>
+                                <connections>
+                                    <segue destination="x2v-82-uVi" kind="show" identifier="exitSegue" id="suQ-eG-GJL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="exit" destination="QHc-EJ-wk9" id="P2s-iv-0JA"/>
                         <outlet property="qLabel" destination="UBf-cy-SZe" id="oMG-Bg-WsA"/>
+                        <outlet property="view" destination="Kxx-ot-LjN" id="Rnx-fe-eXG"/>
+                        <segue destination="x2v-82-uVi" kind="show" identifier="finalSegue" action="showDetailViewController:sender:" id="6XC-Ma-f3J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iU9-qo-5GY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="965.60000000000002" y="635.53223388305855"/>
+        </scene>
+        <!--Finished Controller-->
+        <scene sceneID="V26-Xr-J6q">
+            <objects>
+                <viewController id="x2v-82-uVi" customClass="FinishedController" customModule="iQuiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dGo-NH-QvB"/>
+                        <viewControllerLayoutGuide type="bottom" id="bN3-Jt-BXk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="SUL-nu-vrk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xrd-dp-r3U">
+                                <rect key="frame" x="143" y="350" width="90" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Go Back"/>
+                                <connections>
+                                    <segue destination="uM5-tQ-9Ka" kind="show" identifier="" id="Pyf-Fx-33N"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="diJ-1g-GhQ">
+                                <rect key="frame" x="9" y="61" width="359" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jkg-t8-KyB">
+                                <rect key="frame" x="0.0" y="190" width="375" height="61"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="Message" destination="Jkg-t8-KyB" id="LP6-NB-Kg7"/>
+                        <outlet property="Score" destination="diJ-1g-GhQ" id="axb-rr-2iT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cXB-kF-95J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="965.60000000000002" y="1351.5742128935533"/>
         </scene>
         <!--Answer Controller-->
         <scene sceneID="ixS-p7-69l">
@@ -235,6 +294,7 @@
         <image name="science-icon-19049" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gdg-7z-lfL"/>
+        <segue reference="cG0-lv-sgB"/>
+        <segue reference="6XC-Ma-f3J"/>
     </inferredMetricsTieBreakers>
 </document>

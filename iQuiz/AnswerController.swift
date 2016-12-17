@@ -24,6 +24,7 @@ class AnswerController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(qLength)
         prompt.text = question
         if (givenAnswer == realAnswer) {
             message.text = "You got it right!"

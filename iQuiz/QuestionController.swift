@@ -21,6 +21,8 @@ class QuestionController: UIViewController {
     var correct : Int?
     var qLength : Int?
     
+    @IBOutlet weak var exit: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print(current!)
@@ -28,9 +30,17 @@ class QuestionController: UIViewController {
         print("Got here")
         readQuestions()
         qLength = Questions.count
-        let currentQuestion = Questions[current!]
-        print("Question: \(currentQuestion.question!), Answers: \(currentQuestion.answers!), Real Answer:\(currentQuestion.answer!)")
-        makeQuestions()
+        print(qLength!)
+        print(current!)
+        if (qLength! == current!) {
+            print("Got to segue thingy")
+            //self.performSegue(withIdentifier: "finalSegue", sender: self)
+
+        } else {
+            let currentQuestion = Questions[current!]
+            print("Question: \(currentQuestion.question!), Answers: \(currentQuestion.answers!), Real Answer:\(currentQuestion.answer!)")
+            makeQuestions()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,13 +102,19 @@ class QuestionController: UIViewController {
     @IBOutlet weak var qLabel: UILabel!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let DestViewController : AnswerController = segue.destination as! AnswerController
-        DestViewController.givenAnswer = selectedAnswer
-        DestViewController.realAnswer = Questions[current!].answers[Questions[current!].answer]
-        DestViewController.type = type
-        DestViewController.current = current!
-        DestViewController.correct = correct!
-        DestViewController.qLength = qLength!
+        if (segue.identifier == "exitSegue" || segue.identifier == "finalSegue") {
+            let DestViewController : FinishedController = segue.destination as! FinishedController
+            DestViewController.current = current!
+            DestViewController.correct = correct!
+        } else {
+            let DestViewController : AnswerController = segue.destination as! AnswerController
+            DestViewController.givenAnswer = selectedAnswer
+            DestViewController.realAnswer = Questions[current!].answers[Questions[current!].answer]
+            DestViewController.type = type
+            DestViewController.current = current!
+            DestViewController.correct = correct!
+            DestViewController.qLength = qLength!
+        }
     }
 }
 
