@@ -30,6 +30,8 @@ class ViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let DestViewController : QuestionController = segue.destination as! QuestionController
         DestViewController.type = segue.identifier!
+        DestViewController.current = 0
+        DestViewController.correct = 0
         //print(segue.identifier!)
     }
 }

@@ -17,13 +17,18 @@ class QuestionController: UIViewController {
     var Questions = [Question]()
     var selectedAnswer: String!
     var type : String!
+    var current : Int?
+    var correct : Int?
+    var qLength : Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(current!)
+        print(correct!)
         print("Got here")
-        print(type)
-        Questions = [Question(question: "3 + 5 = ?", answers: ["2", "3", "8", "9"], answer: 2)]
-        let currentQuestion = Questions[0]
+        readQuestions()
+        qLength = Questions.count
+        let currentQuestion = Questions[current!]
         print("Question: \(currentQuestion.question!), Answers: \(currentQuestion.answers!), Real Answer:\(currentQuestion.answer!)")
         makeQuestions()
     }
@@ -35,11 +40,11 @@ class QuestionController: UIViewController {
     
     // pass an int to select question
     func makeQuestions() {
-        qLabel.text = "\(Questions[0].question!)"
+        qLabel.text = "\(Questions[current!].question!)"
         print(qLabel.text!)
         var y = 80
-        for answer in Questions[0].answers {
-            let button = UIButton(frame: CGRect(x: 130, y: y, width: 100, height: 50))
+        for answer in Questions[current!].answers {
+            let button = UIButton(frame: CGRect(x: 120, y: y, width: 150, height: 50))
             button.backgroundColor = .blue
             button.setTitle("\(answer)", for: .normal)
             button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
@@ -54,14 +59,46 @@ class QuestionController: UIViewController {
         print(selectedAnswer)
     }
     
+    func readQuestions() {
+        let mainPath = Bundle.main.path(forResource: "/\(type!)", ofType: "txt")
+        print(mainPath!)
+        do {
+            let data = try String(contentsOfFile: mainPath!, encoding: .utf8)
+            let myStrings = data.components(separatedBy: .newlines)
+            print(myStrings)
+            var i = 0
+            while (i < myStrings.count - 1) {
+                let prompt = myStrings[i]
+                i += 1
+                let numQ = Int(myStrings[i])!
+                i += 1
+                var qList = [String]()
+                for index in i...(i + numQ - 1) {
+                    qList.append(myStrings[index])
+                }
+                i += numQ
+                let answer = Int(myStrings[i])
+                print(prompt)
+                print(qList)
+                print(answer!)
+                Questions.append(Question(question: prompt, answers: qList, answer: answer))
+                i += 1
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     @IBOutlet weak var qLabel: UILabel!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let DestViewController : AnswerController = segue.destination as! AnswerController
         DestViewController.givenAnswer = selectedAnswer
-        DestViewController.realAnswer = Questions[0].answers[Questions[0].answer]
-        print(DestViewController.givenAnswer)
-        print(DestViewController.realAnswer)
+        DestViewController.realAnswer = Questions[current!].answers[Questions[current!].answer]
+        DestViewController.type = type
+        DestViewController.current = current!
+        DestViewController.correct = correct!
+        DestViewController.qLength = qLength!
     }
 }
 

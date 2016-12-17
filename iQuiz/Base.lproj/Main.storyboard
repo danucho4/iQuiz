@@ -202,6 +202,13 @@
                                     <segue destination="e14-CO-NxZ" kind="show" id="gdg-7z-lfL"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Question goes here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adf-Xa-4Hm">
+                                <rect key="frame" x="0.0" y="20" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="The Answer is correct" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4sY-kl-UBD">
                                 <rect key="frame" x="104" y="130" width="167" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -214,6 +221,7 @@
                     </view>
                     <connections>
                         <outlet property="message" destination="4sY-kl-UBD" id="qx9-SE-fzl"/>
+                        <outlet property="prompt" destination="adf-Xa-4Hm" id="sDd-ql-sMQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Xp-ME-gn0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -227,6 +235,6 @@
         <image name="science-icon-19049" width="512" height="512"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="27h-qQ-NqJ"/>
+        <segue reference="gdg-7z-lfL"/>
     </inferredMetricsTieBreakers>
 </document>
