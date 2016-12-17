@@ -35,6 +35,7 @@ class QuestionController: UIViewController {
         if (qLength! == current!) {
             print("Got to segue thingy")
             //self.performSegue(withIdentifier: "finalSegue", sender: self)
+            qLabel.text = "All questions complete! Hit exit!"
 
         } else {
             let currentQuestion = Questions[current!]
